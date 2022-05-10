@@ -13,3 +13,11 @@ Third, you will reach to the game where backgound is website and kill the bugs t
 Fourth, after you win clear the bugs there will be a button that link to a webstie that link to other useless websites.
 
 Fifth, have fun with games and also with useless websites. 
+
+# More on the spider 
+
+There will be adding background story of the spider and games on that.
+
+Planning on having hatching egg game and  hidden spider game as the story told. 
+
+fix the problem that bug go out of the screen in first game(clicking on the bugs to clear) .
