@@ -32,9 +32,19 @@ switch (state) {
     case "title":
       title();
       break;
+
+  case "bgst":
+   bgst();
+  break;
+
       case "lvl1":
     lvl1();
     break;
+
+    case "bgst1":
+     bgst1();
+    break;
+
     case"end":
     end();
     break;
@@ -201,6 +211,9 @@ endShape();
     textSize(25);
     fill(255, 255, 255);
     text("Start", width * 0.45, height * 0.86);
+    rect(width*0.8,height*0.8,60,60);
+textSize(20);
+text("Story", width * 0.81, height * 0.86);
 }
 
 
@@ -281,6 +294,82 @@ function mousePressed() {
   }
   }
 
+  if (state == "title"){
+   if (mouseX >width*0.8 && mouseX < width*0.9 && mouseY>height* 0.8 && mouseY<height*0.9){
+     state = "bgst";
+   }
+}
+
+ if (state == "bgst"){
+  if ( mouseX > width * 0.4 &&  mouseX < width * 0.6 &&  mouseY > height * 0.8 &&  mouseY < height * 0.9){
+    state = "bgst1";
+    console.log("click!");
+  }
+}
+if (state == "bgst1"){
+ if ( mouseX > width * 0.1 &&  mouseX < width * 0.9 &&  mouseY > height * 0.1 &&  mouseY < height * 0.9){
+  eggx = eggx + random(-4,4);
+   eggy = eggy + random(-4,4);
+ }
+}
+//if (state == "bgst1"){
+// if ( mouseX > width * 0.1 &&  mouseX < width * 0.9 &&  mouseY > height * 0.1 &&  mouseY < height * 0.9){
+// }
+//}
+}
 
 
+
+function bgst(){
+  cursor();
+ background('black') ;
+   bgstory();
+   clickb();
+
+}
+let bgtxt = "Due to developers facing bugs regularly,\nresearchers explored a way that will clear the bugs\neasily. After many years of research,\n they invented a robotic spider.\n You are now viewing the invention of spider\n known as Bao Zi.";
+
+function bgstory(){
+textLeading(50);
+push();
+typeWriter(bgtxt,0,width*0.2,height*0.2,1);
+pop();
+}
+
+function typeWriter(sentence, n, x, y, speed) {
+  if (n < (sentence.length)) {
+    text(sentence.substring(0, n+1), x, y);
+    n++;
+    setTimeout(function() {
+      typeWriter(sentence, n, x, y, speed)
+    }, speed);
+  }
+}
+
+function clickb(){
+  push();
+  fill(217,217,217);
+  noStroke();
+beginShape();
+  vertex(width*0.4,height*0.8);
+  vertex(width*0.4,height*0.9);
+   vertex(width*0.6,height*0.9);
+    vertex(width*0.6,height*0.8);
+endShape();
+  stroke(SPIcolor)
+  textSize(25);
+  fill(255, 255, 255);
+  text("Continue", width * 0.42, height * 0.86);
+  pop();
+}
+let eggx= 300;
+let eggy= 300;
+function bgst1(){
+ background('lightblue');
+ egg();
+}
+
+function egg(){
+  noStroke();
+  ellipse(eggx,eggy,150,200);
 }
