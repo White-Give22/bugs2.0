@@ -2,33 +2,22 @@ html, body {
   margin: 0;
   padding: 0;
   top: 0;
-width: 100%;
-height: 100%;
-position: absolute;
-background: linear-gradient(
-  50deg,
-  #FFB6C1,
-  #FAFAD2,
-  #7FFFD4,
-  #ffcccb,
-  #DDA0DD,
-  #fed8b1
-);
-background-size: 600% 100%;
-animation: gradient 9s linear infinite;
-animation-direction: alternate;
+  background: url("spbg.jpg");
+  background-size: cover;
+
 }
-@keyframes gradient {
-0% {
-  background-position: 0%;
-}
-100% {
-  background-position: 100%;
-}
-}
+
 canvas{
   display:block;
-  margin-top: 5px;
+  margin-top: 50px;
   margin-left: auto;
   margin-right: auto;
   }
+
+h1{
+  text-align: center;
+   font-style: italic;
+   color: white;
+   font-size: 40px;
+
+}

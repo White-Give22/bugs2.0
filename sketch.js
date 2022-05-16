@@ -6,8 +6,10 @@ var gui;
 var bugs = [];
 var t;
 var p = false;
+let bg;
 
 function setup() {
+  bg = loadImage('b1.jpg');
 
   cnv = createCanvas(600, 600);
     	frameRate(30);
@@ -25,15 +27,7 @@ function setup() {
 function draw() {
   background(0);
   angleMode(DEGREES);
- 	for (var x = 0; x < width; x += width / 10) {
-		for (var y = 0; y < height; y += height / 10) {
-			stroke(150);
-			strokeWeight(1);
-			line(x, 0, x, height);
-			line(0, y, width, y);
-		}
 
-	}
 switch (state) {
     case "title":
       title();
@@ -211,40 +205,55 @@ endShape();
 
 
 function lvl1(){
-  background('#c3c6c6');
-    push();
+  background(bg);
+      push();
   translate(width*0,height*0.2);
   spider();
-    pop();
   noCursor();
+   pop();
+
   lcursor();
   	for (var i = bugs.length - 1; i >= 0; i--){
 
-  bugs[i].update();
+    bugs[i].update();
 	bugs[i].display();
   //if bug.length==0 go to game over screen
 
       if (state == 'lvl1'){
         if(bugs.length == 1) {
           state ="end";
-          console.log('ww');
-        }      }
+          }
+      }
+   }
 }
-    }
 
 function end(){
+  noCursor();
   background('black');
+    lcursor1();
+
   spider();
   text('The last bug use the bughole to runaway', width * 0.15, height * 0.3)
   text('Here is reward for you',width *0.3,height*0.8);
-  let a = createA('https://theuselessweb.com/', 'Click Me');
-a.position(width*0.3,height* 0.8);
+  beginShape();
+  vertex(width*0.38,height*0.83);
+  vertex(width*0.38,height*0.93);
+   vertex(width*0.62,height*0.93);
+    vertex(width*0.62,height*0.83);
+endShape();
+
+  text('Click Me', width * 0.42, height * 0.89);
 }
 
 function lcursor(){
   stroke('white');
   strokeWeight(2);
   line(width*0.5,height*0.751,mouseX,mouseY);
+}
+function lcursor1(){
+  stroke('white');
+  strokeWeight(2);
+  line(width*0.5,height*0.551,mouseX,mouseY);
 }
 function mousePressed() {
   if (state == "title") {
@@ -266,4 +275,12 @@ function mousePressed() {
       p = false;
     }
 }
+  if (state == "end"){
+      if (mouseX >width*0.38 && mouseX < width*0.62 && mouseY>height* 0.83 && mouseY<height*0.93){
+    window.open('https://theuselessweb.com');
+  }
+  }
+
+
+
 }
