@@ -1,5 +1,5 @@
 let cnv;
-var SPIcolor = '#3a7b83';
+var SPIcolor = '#467491';
 let state = "title";
 let a;
 var gui;
@@ -7,9 +7,17 @@ var bugs = [];
 var t;
 var p = false;
 let bg;
+let bgtxt = "Due to developers facing bugs regularly,\nresearchers explored a way that will clear the bugs\neasily. After many years of research,\n they invented a robotic spider.\n You are now viewing the invention of spider\n known as Bao Zi.";
+let blackscreen = true;
+let storyplay = true;
+let eggx= 300;
+let eggy= 300;
+let eggclick = 0;
+let bgdelay = 0;
+let baozi = "Bao Zi is  born."
 
 function setup() {
-  bg = loadImage('b1.jpg');
+  bg = loadImage('asset/b1.jpg');
 
   cnv = createCanvas(600, 600);
     	frameRate(30);
@@ -25,7 +33,6 @@ function setup() {
 
 
 function draw() {
-  background(0);
   angleMode(DEGREES);
 
 switch (state) {
@@ -53,7 +60,7 @@ switch (state) {
 
 
 function title(){
-
+background('black');
   wifi();
  spider();
   bstart();
@@ -303,13 +310,15 @@ function mousePressed() {
  if (state == "bgst"){
   if ( mouseX > width * 0.4 &&  mouseX < width * 0.6 &&  mouseY > height * 0.8 &&  mouseY < height * 0.9){
     state = "bgst1";
+    storyplay = false;
     console.log("click!");
   }
 }
 if (state == "bgst1"){
  if ( mouseX > width * 0.1 &&  mouseX < width * 0.9 &&  mouseY > height * 0.1 &&  mouseY < height * 0.9){
-  eggx = eggx + random(-4,4);
-   eggy = eggy + random(-4,4);
+  eggx = eggx + random(-10,10);
+   eggy = eggy + random(-10,10);
+   eggclick++;
  }
 }
 //if (state == "bgst1"){
@@ -321,19 +330,26 @@ if (state == "bgst1"){
 
 
 function bgst(){
+  if (storyplay){
+
+  bgstory();
+}
+//background('black') ;
+
   cursor();
- background('black') ;
-   bgstory();
    clickb();
 
 }
-let bgtxt = "Due to developers facing bugs regularly,\nresearchers explored a way that will clear the bugs\neasily. After many years of research,\n they invented a robotic spider.\n You are now viewing the invention of spider\n known as Bao Zi.";
+
 
 function bgstory(){
+  if (blackscreen){
+    background('black');
+    blackscreen = false ;
+  }
 textLeading(50);
-push();
-typeWriter(bgtxt,0,width*0.2,height*0.2,1);
-pop();
+typeWriter(bgtxt,0,width*0.2,height*0.2,0.01);
+
 }
 
 function typeWriter(sentence, n, x, y, speed) {
@@ -362,11 +378,29 @@ endShape();
   text("Continue", width * 0.42, height * 0.86);
   pop();
 }
-let eggx= 300;
-let eggy= 300;
+
 function bgst1(){
  background('lightblue');
  egg();
+console.log(bgdelay);
+if(eggclick > 10){
+  background('white');
+  bgdelay++;
+}
+if (bgdelay >10){
+
+  push();
+  translate(-300,-400);
+  scale(2);
+  spider();
+  pop();
+  stroke('black');
+  textSize(25);
+  text("Bao Zi is born!!!!!", width*0.35, height *0.8);
+}
+if (bgdelay > 75){
+  state = 'title';
+}
 }
 
 function egg(){
