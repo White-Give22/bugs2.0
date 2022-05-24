@@ -7,6 +7,14 @@ html, body {
 
 }
 
+/*.a{
+  display: block;
+  border:  4mm ridge rgba(255,192,203,1);
+  position:absolute;
+  left:70%;
+  top:20%;
+}*/
+
 canvas{
   display:block;
   margin-top: 50px;
@@ -20,7 +28,4 @@ h1{
    color: white;
    font-size: 40px;
 
-}
-audio{
- float:right; 
 }
