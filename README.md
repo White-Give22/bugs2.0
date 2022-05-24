@@ -21,3 +21,17 @@ There will be adding background story of the spider and games on that.
 Planning on having a hatching egg game and a hidden spider game as the story is told. 
 
 fix the problem that bugs go out of the screen in the first game(clicking on the bugs to clear).
+
+# Artist Statment 
+
+This is the second game that I worked on p5js. I was inspired by the moment when I was trying to find on the stupid mistakes or dumb spelling mistakes whicht 
+
+took me a long time to find it. Then fix it. So, I wanted something easy to clear the bugs or fix the bugs. I want everyone to have a  esay time to fixing the bugs.
+
+This is a simple game that you play with mouse clicking. After you killed the bugs, you will have a reward which is website for more useless websites.
+
+Try it and waste your time there. I also inlcude the background story for the spider. There is the bug or problem where hatcing the egg with text. This is why we need 
+
+him right.
+
+
