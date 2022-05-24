@@ -207,6 +207,8 @@ function spider(){
 }
 function bstart(){
   fill(217,217,217);
+
+cursor();
   noStroke();
 beginShape();
   vertex(width*0.4,height*0.8);
@@ -261,8 +263,16 @@ function end(){
    vertex(width*0.62,height*0.93);
     vertex(width*0.62,height*0.83);
 endShape();
+  text('Click Me', width * 0.43, height * 0.89);
+beginShape();
+  vertex(width*0.4,height*0.15);
+  vertex(width*0.4,height*0.25);
+   vertex(width*0.6,height*0.25);
+    vertex(width*0.6,height*0.15);
+endShape();
 
-  text('Click Me', width * 0.42, height * 0.89);
+text('Title', width * 0.43, height * 0.21);
+
 }
 
 function lcursor(){
@@ -276,6 +286,13 @@ function lcursor1(){
   line(width*0.5,height*0.551,mouseX,mouseY);
 }
 function mousePressed() {
+
+  if (state == "end"){
+      if (mouseX >width*0.4 && mouseX < width*0.6 && mouseY>height* 0.15 && mouseY<height*0.25){
+    state = "title";
+  }
+  }
+
   if (state == "title") {
     if ( mouseX > width * 0.4 &&  mouseX < width * 0.6 &&  mouseY > height * 0.8 &&  mouseY < height * 0.9) {
       state = "lvl1";
@@ -284,12 +301,9 @@ function mousePressed() {
   }
     //console.log("click!");
 	for (var i = bugs.length - 1; i >= 0; i--){
-
     if (bugs[i].isNear()) {
-
     bugs.splice(i,1);
       p = true;
-
     }
     else {
       p = false;
@@ -321,10 +335,7 @@ if (state == "bgst1"){
    eggclick++;
  }
 }
-//if (state == "bgst1"){
-// if ( mouseX > width * 0.1 &&  mouseX < width * 0.9 &&  mouseY > height * 0.1 &&  mouseY < height * 0.9){
-// }
-//}
+
 }
 
 
@@ -387,8 +398,9 @@ if(eggclick > 10){
   background('white');
   bgdelay++;
 }
+textSize(30);
+text("Click to hatch the egg", width*0.3,height*0.8);
 if (bgdelay >10){
-
   push();
   translate(-300,-400);
   scale(2);
